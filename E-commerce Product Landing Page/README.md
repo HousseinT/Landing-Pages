@@ -1,59 +1,100 @@
-# Front-End Improvements: Migration and Optimization
+# E‑Commerce Product Landing Page — Production‑Grade React + Vite
 
-## Overview
-This change set implements mobile carousel/video fixes, performance optimizations, accessibility and SEO enhancements, plus a TypeScript → ES6+ JavaScript migration with tests and linting.
+High‑performance, conversion‑focused product landing page engineered with React, Vite, and Tailwind CSS. Designed for speed, accessibility, and SEO, with a 3D product hero, mobile‑first interactions, and robust testing.
 
-## Migration Plan
-- Branch: `feature/front-end-improvements`
-- Steps:
-  - Convert `src/App.tsx` and `src/main.tsx` to `src/App.jsx` and `src/main.jsx`.
-  - Remove TypeScript configs (`tsconfig*.json`, `vite-env.d.ts`).
-  - Switch to flat ESLint config for JS.
-  - Add testing (Vitest + Testing Library).
-  - Update Vite config (`vite.config.js`) and add bundle visualizer.
-- Rollback:
-  - Restore TypeScript files and configs from previous commit.
-  - Revert ESLint config to TS version.
-  - Replace `index.html` entry back to `/src/main.tsx`.
+## Highlights
+- 3D product hero with CSS `preserve-3d`, perspective, lighting, and hover motion
+- Mobile carousel/video UX with touch, keyboard, and accessible controls
+- Performance‑optimized assets, code splitting, and bundle analysis
+- Accessibility‑first implementation with ARIA semantics and keyboard navigation
+- SEO‑ready markup, OpenGraph/Twitter tags, and product JSON‑LD
 
-## Mobile Carousel + Video Fixes
-- Touch handlers: swipe left/right for carousel.
-- Video controls: show native controls on touch devices; overlay play/pause on desktop.
-- Keyboard support: ArrowLeft/ArrowRight to navigate, Space to toggle video.
-- Visibility: mobile arrow buttons added with higher `z-index`.
+## Tech Stack
+- React 18 + Vite 5
+- Tailwind CSS 3
+- Lucide React icons
+- Vitest + Testing Library (JS + JSDOM)
 
-## Performance
-- Code splitting via React.lazy in `App.jsx`.
-- Memoization using `React.memo` and `useMemo` in feature components.
-- Asset hints: lazy image loading, `decoding="async"`, `sizes`/`srcSet`.
-- Bundle analysis: `rollup-plugin-visualizer` outputs `dist/stats.html`.
+## Getting Started
+- Requirements: Node.js ≥ 18
+- Install: `npm install`
+- Develop: `npm run dev` and open `http://localhost:5173`
+- Lint: `npm run lint`
+- Test: `npm run test`
+- Build: `npm run build`
+- Preview: `npm run preview`
 
-## Accessibility
-- ARIA roles for carousel region and live status.
-- Keyboard navigation for media controls.
-- Descriptive `aria-label`s for buttons and video.
+## Project Structure
+```
+src/
+  assets/                # Static images and media
+  components/            # Page sections (Hero, Gallery, Pricing, etc.)
+  App.jsx                # App entry and route composition
+  main.jsx               # Vite bootstrap
+index.html               # Root HTML and meta tags
+tailwind.config.js       # Tailwind configuration
+vite.config.js           # Vite and plugins
+```
 
-## SEO
-- Semantic `<main>` element.
-- Canonical link, OpenGraph/Twitter meta tags.
-- Product structured data via JSON-LD.
+## Feature Details
 
-## Testing
-- `vitest` with `jsdom`.
-- Basic render test for `App`.
-- Interaction test for `Hero` keyboard navigation.
+### 3D Product Hero
+- Full‑cover image inside a circular container using `object-cover`
+- CSS 3D: `perspective` and `transform-style: preserve-3d`
+- Layered lighting, inner shadows, and responsive glow effects
+- Smooth hover transitions (`scale`, `rotateX`, `rotateY`) with easing
+
+### Mobile Carousel + Video
+- Touch gestures for swipe navigation
+- Native media controls on touch; overlay controls on desktop
+- Keyboard support: ArrowLeft/ArrowRight for navigation, Space for play/pause
+- Mobile buttons with elevated `z-index` for consistent tap targets
+
+### Performance
+- Route/section code splitting via `React.lazy`
+- Memoization with `React.memo` / `useMemo`
+- Optimized assets: lazy images, `decoding="async"`, `sizes`/`srcSet`
+- Bundle visualizer (`rollup-plugin-visualizer`) → `dist/stats.html`
+
+### Accessibility
+- Landmarks and roles for carousel regions and status
+- Keyboard‑first interactions across media and controls
+- Clear, descriptive labels via `aria-label`
+
+### SEO
+- Semantic layout with `<main>` and relevant headings
+- Canonical link, OpenGraph/Twitter social previews
+- Product structured data via JSON‑LD for rich results
+
+### Testing & QA
+- Unit/interaction tests with Vitest + Testing Library
+- `jsdom` environment for component behavior
+- Example tests: App renders, Hero keyboard navigation
 
 ## Commands
 - Dev: `npm run dev`
 - Build: `npm run build`
 - Lint: `npm run lint`
 - Test: `npm run test`
-- Visualize bundle: open `dist/stats.html` after build.
+- Preview build: `npm run preview`
+- Lighthouse: `npm run lighthouse` (run while dev server is active)
+- Visualize bundle: open `dist/stats.html` after build
+
+## Deployment
+- Build with `npm run build`
+- Deploy the `dist/` folder to your static host (Netlify, Vercel, S3, etc.)
+- Ensure appropriate cache headers for CSS/JS and immutable assets
 
 ## Benchmarking
-- Build outputs recorded from Vite.
-- Lighthouse command added: `npm run lighthouse` (run with dev server).
+- Measure performance with Lighthouse (`npm run lighthouse`)
+- Record bundle composition with `rollup-plugin-visualizer` → `dist/stats.html`
 
-## Backward Compatibility
-- Component props unchanged; only internal behaviors updated.
+## Professional Identity
+Senior Front‑End Developer focused on performance, accessibility, and product growth. I design and build conversion‑oriented interfaces with modern React tooling, ship maintainable code, and validate quality with testing and metrics.
 
+- Focus: React, Vite, Tailwind CSS, Web Performance, Accessibility, SEO
+- Principles: measurable impact, clean architecture, and developer experience
+- Highlights: mobile UX, scalable styling, CI‑ready testing, analytics‑driven iteration
+
+## License
+Licensed under the MIT License. See `LICENSE` for details.
