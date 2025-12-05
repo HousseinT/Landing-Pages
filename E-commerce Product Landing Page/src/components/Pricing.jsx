@@ -1,136 +1,123 @@
-import { Check, Star, Shield, Truck, Award } from 'lucide-react';
-
-const pricingFeatures = [
-  '1.4" AMOLED Display',
-  'Heart Rate & SpO2 Monitor',
-  'Sleep Tracking & Analysis',
-  '5ATM Waterproof Rating',
-  '7-Day Battery Life',
-  'Bluetooth 5.0 Connectivity',
-  '100+ Sport Modes',
-  'GPS Navigation',
-  'Music Control',
-  'Phone Notifications',
-  'Weather Updates',
-  'Find My Phone Feature',
-];
-
-const trustBadges = [
-  { icon: Shield, text: '2-Year Warranty' },
-  { icon: Truck, text: 'Free Shipping' },
-  { icon: Award, text: '30-Day Returns' },
-];
+import React from 'react';
+import { Check, ShoppingCart, Zap, Shield, Truck } from 'lucide-react';
+import { memo, useMemo } from 'react';
 
 const Pricing = () => {
-  return (
-    <section className="py-20 lg:py-32 bg-slate-50 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMyMTk2RjMiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDE2YzAtMi4yMSAxLjc5LTQgNC00czQgMS43OSA0IDQtMS43OSA0LTQgNC00LTEuNzktNC00em0wIDI0YzAtMi4yMSAxLjc5LTQgNC00czQgMS43OSA0IDQtMS43OSA0LTQgNC00LTEuNzktNC00ek0xMiAxNmMwLTIuMjEgMS43OS00IDQtNHM0IDEuNzkgNCA0LTEuNzkgNC00IDQtNC0xLjc5LTQtNHptMCAyNGMwLTIuMjEgMS43OS00IDQtNHM0IDEuNzkgNCA0LTEuNzkgNC00IDQtNC0xLjc5LTQtNHoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-50"></div>
+  const benefits = useMemo(() => [
+    { icon: Zap, text: 'Free 2-day shipping' },
+    { icon: Shield, text: '2-year warranty included' },
+    { icon: Truck, text: 'Free returns within 30 days' },
+  ], []);
 
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+  const included = useMemo(() => [
+    'Apple Watch Ultra 2 (49mm)',
+    'Orange Ocean Band',
+    'Magnetic USB-C Charging Cable',
+    '2-Year Limited Warranty',
+    'Technical Support & Setup',
+    'Cellular Connectivity Ready',
+  ], []);
+
+  return (
+    <section id="pricing" className="py-24 bg-gradient-to-b from-[#0A1A2F] to-[#0F2847] relative overflow-hidden">
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-20 left-1/2 transform -translate-x-1/2 w-[600px] h-[600px] bg-[#FF7A1A] rounded-full filter blur-[150px]"></div>
+      </div>
+
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 space-y-4">
-          <span className="px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold inline-block">
-            Limited Time Offer
-          </span>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900">
-            Premium Quality,
-            <span className="block text-blue-600">Unbeatable Price</span>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white">
+            Own the
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF7A1A] to-[#FF9500]"> Ultimate</span>
           </h2>
-          <p className="text-xl text-slate-600">
-            Get 30% off your SmartWatch Pro today
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            Invest in precision engineering and unmatched performance.
           </p>
         </div>
 
-        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border-2 border-blue-500 relative">
-          <div className="absolute top-0 right-0 bg-gradient-to-br from-red-500 to-orange-500 text-white px-6 py-2 rounded-bl-3xl font-bold shadow-lg">
-            SAVE $130
-          </div>
-
-          <div className="p-8 lg:p-12">
-            <div className="flex items-start justify-between mb-8">
-              <div>
-                <h3 className="text-3xl font-bold text-slate-900 mb-2">
-                  SmartWatch Pro
+        <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/20 rounded-3xl p-8 sm:p-12 shadow-2xl">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="mb-8">
+                <h3 className="text-3xl font-bold text-white mb-2">
+                  Apple Watch Ultra 2
                 </h3>
-                <div className="flex items-center gap-2">
-                  <div className="flex items-center">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className="w-5 h-5 fill-yellow-400 text-yellow-400"
-                      />
-                    ))}
-                  </div>
-                  <span className="text-slate-600 font-medium">4.9/5 (12,450 reviews)</span>
+                <p className="text-gray-400">Titanium with Orange Ocean Band</p>
+              </div>
+
+              <div className="mb-8">
+                <div className="flex items-baseline gap-2">
+                  <span className="text-6xl font-bold text-white">$799</span>
+                  <span className="text-gray-400 text-lg line-through">$899</span>
+                </div>
+                <div className="inline-flex items-center gap-2 bg-[#FF7A1A]/20 border border-[#FF7A1A]/50 rounded-full px-4 py-2 mt-4">
+                  <Zap size={16} className="text-[#FF7A1A]" />
+                  <span className="text-sm text-[#FF7A1A] font-semibold">Limited Time Offer - Save $100</span>
                 </div>
               </div>
-            </div>
 
-            <div className="mb-8 pb-8 border-b border-slate-200">
-              <div className="flex items-end gap-3 mb-2">
-                <span className="text-5xl lg:text-6xl font-bold text-slate-900">
-                  $299
-                </span>
-                <span className="text-3xl text-slate-400 line-through mb-2">
-                  $429
-                </span>
-              </div>
-              <p className="text-slate-600 text-lg">
-                One-time payment. No subscriptions. No hidden fees.
-              </p>
-            </div>
+              <button className="w-full bg-gradient-to-r from-[#FF7A1A] to-[#FF9500] text-white px-8 py-5 rounded-full font-bold text-lg hover:shadow-2xl hover:shadow-[#FF7A1A]/50 transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-3 mb-6 group" aria-label="Add Apple Watch Ultra 2 to cart">
+                <ShoppingCart size={24} />
+                Add to Cart
+                <div className="w-0 group-hover:w-2 h-2 bg-white rounded-full transition-all duration-300"></div>
+              </button>
 
-            <div className="mb-8">
-              <h4 className="text-xl font-bold text-slate-900 mb-4">
-                What's Included:
-              </h4>
-              <div className="grid sm:grid-cols-2 gap-3">
-                {pricingFeatures.map((feature, index) => (
-                  <div key={index} className="flex items-center gap-2">
-                    <Check className="w-5 h-5 text-blue-600 flex-shrink-0" />
-                    <span className="text-slate-700">{feature}</span>
+              <div className="grid grid-cols-1 gap-3">
+                {benefits.map((benefit, index) => (
+                  <div key={index} className="flex items-center gap-3 text-gray-300">
+                    <div className="w-10 h-10 bg-[#FF7A1A]/20 rounded-lg flex items-center justify-center">
+                      <benefit.icon size={20} className="text-[#FF7A1A]" />
+                    </div>
+                    <span className="font-medium">{benefit.text}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <button className="w-full py-5 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-full font-bold text-xl shadow-lg shadow-blue-500/50 hover:shadow-xl hover:shadow-blue-500/60 transition-all duration-300 hover:scale-105 mb-6">
-              Get 30% Off Now - $299
-            </button>
-
-            <div className="grid sm:grid-cols-3 gap-4">
-              {trustBadges.map((badge, index) => {
-                const Icon = badge.icon;
-                return (
-                  <div
-                    key={index}
-                    className="flex items-center gap-2 justify-center p-3 bg-slate-50 rounded-xl"
-                  >
-                    <Icon className="w-5 h-5 text-blue-600" />
-                    <span className="text-sm font-medium text-slate-700">
-                      {badge.text}
-                    </span>
-                  </div>
-                );
-              })}
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
+              <h4 className="text-2xl font-bold text-white mb-6">What's Included</h4>
+              <ul className="space-y-4">
+                {included.map((item, index) => (
+                  <li key={index} className="flex items-start gap-3 text-gray-300">
+                    <div className="w-6 h-6 bg-gradient-to-br from-[#FF7A1A] to-[#FF9500] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Check size={14} className="text-white" />
+                    </div>
+                    <span className="leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
+          </div>
 
-            <p className="text-center text-slate-500 text-sm mt-6">
-              🔥 Only 47 units left at this price! Offer ends in 48 hours.
-            </p>
+          <div className="mt-12 pt-8 border-t border-white/10">
+            <div className="grid sm:grid-cols-3 gap-8 text-center">
+              <div>
+                <div className="text-3xl font-bold text-white mb-2">256</div>
+                <div className="text-sm text-gray-400">Payment Options</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-white mb-2">SSL</div>
+                <div className="text-sm text-gray-400">Secure Checkout</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-white mb-2">24/7</div>
+                <div className="text-sm text-gray-400">Customer Support</div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="mt-12 text-center">
-          <p className="text-slate-600 mb-4">Trusted by leading brands</p>
-          <div className="flex items-center justify-center gap-8 grayscale opacity-50">
-            <div className="text-2xl font-bold">TECH</div>
-            <div className="text-2xl font-bold">HEALTH</div>
-            <div className="text-2xl font-bold">SPORT</div>
-          </div>
+        <div className="mt-8 text-center">
+          <p className="text-gray-400 text-sm">
+            Questions? Contact our sales team at{' '}
+            <a href="mailto:sales@watchultra.com" className="text-[#FF7A1A] hover:underline">
+              sales@watchultra.com
+            </a>
+          </p>
         </div>
       </div>
     </section>
   );
 };
 
-export default Pricing;
+export default memo(Pricing);

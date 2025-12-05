@@ -2,16 +2,79 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="shortcut icon" type="image/png" href="/favicon-32.png" />
+    <script type="module">
+      import face from '/src/assets/apple-watch-ultra-2-titanium-orange-ocean-band-face.png';
+      const sizes = [16, 32];
+      const makeIcon = (size) => {
+        const c = document.createElement('canvas');
+        c.width = size; c.height = size;
+        const ctx = c.getContext('2d');
+        const img = new Image();
+        img.decoding = 'async';
+        img.crossOrigin = 'anonymous';
+        img.src = face;
+        img.onload = () => {
+          ctx.clearRect(0, 0, size, size);
+          const ratio = Math.min(size / img.width, size / img.height);
+          const w = Math.round(img.width * ratio);
+          const h = Math.round(img.height * ratio);
+          const x = Math.floor((size - w) / 2);
+          const y = Math.floor((size - h) / 2);
+          ctx.drawImage(img, x, y, w, h);
+          const href = c.toDataURL('image/png');
+          const link = document.createElement('link');
+          link.rel = 'icon';
+          link.type = 'image/png';
+          link.sizes = `${size}x${size}`;
+          link.href = href;
+          document.head.appendChild(link);
+        };
+      };
+      sizes.forEach(makeIcon);
+      const shortcut = document.createElement('link');
+      shortcut.rel = 'shortcut icon';
+      shortcut.type = 'image/png';
+      shortcut.href = face;
+      document.head.appendChild(shortcut);
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Elevate your lifestyle with SmartWatch Pro. Track your health, boost your performance, and stay connected with the most advanced smartwatch ever created. 30% OFF - Limited time offer!" />
-    <title>SmartWatch Pro - Your Life, Elevated | Premium Fitness Tracker</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <meta property="og:image" content="https://bolt.new/static/og_default.png">
+    <meta name="description" content="Apple Watch Ultra 2 in Titanium with Orange Ocean Band. The most rugged and capable smartwatch ever. 49mm display, 100m water resistant, 36hr battery. Buy now." />
+    <link rel="canonical" href="https://example.com/" />
+    <title>Apple Watch Ultra 2 — Titanium Orange Ocean Band</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <meta property="og:title" content="Apple Watch Ultra 2 — Titanium Orange Ocean Band">
+    <meta property="og:description" content="Rugged, capable and engineered for extremes. 49mm display, 100m water resistant, 36hr battery.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com/">
+    <meta property="og:image" content="/src/assets/Apple%20Watch%20Ultra%202%20Titanium%20Orange%20Ocean%20Band.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://bolt.new/static/og_default.png">
+    <meta name="twitter:title" content="Apple Watch Ultra 2">
+    <meta name="twitter:description" content="Rugged, capable and engineered for extremes.">
+    <meta name="twitter:image" content="/src/assets/Apple%20Watch%20Ultra%202%20Titanium%20Orange%20Ocean%20Band.png">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Apple Watch Ultra 2",
+        "image": "/src/assets/Apple%20Watch%20Ultra%202%20Titanium%20Orange%20Ocean%20Band.png",
+        "description": "Rugged smartwatch engineered for extremes with 49mm display and 100m water resistance.",
+        "brand": {
+          "@type": "Brand",
+          "name": "Apple"
+        },
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "USD",
+          "price": "799",
+          "availability": "https://schema.org/InStock"
+        }
+      }
+    </script>
 </head>
   <body>
     <div id="root"></div>

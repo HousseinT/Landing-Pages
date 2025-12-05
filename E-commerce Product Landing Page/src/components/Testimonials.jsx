@@ -1,127 +1,118 @@
+import React from 'react';
 import { Star, Quote } from 'lucide-react';
-
-const testimonials = [
-  {
-    name: 'Sarah Johnson',
-    role: 'Marathon Runner',
-    image: '🏃‍♀️',
-    rating: 5,
-    text: 'This smartwatch completely transformed my training. The accuracy of the heart rate monitor and GPS tracking is incredible. I improved my marathon time by 15 minutes!',
-    color: 'from-blue-500 to-cyan-500',
-  },
-  {
-    name: 'Michael Chen',
-    role: 'Software Engineer',
-    image: '👨‍💻',
-    rating: 5,
-    text: 'As someone who sits all day, the activity reminders and stress monitoring have been life-changing. Plus, the battery lasts way longer than my old smartwatch.',
-    color: 'from-purple-500 to-pink-500',
-  },
-  {
-    name: 'Emily Rodriguez',
-    role: 'Fitness Coach',
-    image: '💪',
-    rating: 5,
-    text: "I recommend this to all my clients. The sleep tracking insights are incredibly detailed, and the waterproof feature means I never have to take it off. It's worth every penny.",
-    color: 'from-emerald-500 to-teal-500',
-  },
-  {
-    name: 'David Park',
-    role: 'Business Owner',
-    image: '👔',
-    rating: 5,
-    text: 'Staying connected without being glued to my phone has been amazing for work-life balance. The notifications work perfectly and the design looks professional.',
-    color: 'from-orange-500 to-red-500',
-  },
-];
+import { memo } from 'react';
 
 const Testimonials = () => {
+  const testimonials = [
+    {
+      name: 'Marcus Chen',
+      role: 'Professional Triathlete',
+      rating: 5,
+      text: 'The Ultra 2 has completely transformed my training. The dual-GPS accuracy is unmatched, and the battery life gets me through the longest races without worry.',
+      image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=200',
+    },
+    {
+      name: 'Sarah Mitchell',
+      role: 'Ocean Explorer',
+      rating: 5,
+      text: 'As a dive instructor, I need equipment I can trust. The depth gauge and water temperature sensor are incredibly accurate. This watch is a true dive computer on my wrist.',
+      image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=200',
+    },
+    {
+      name: 'David Torres',
+      role: 'Mountain Guide',
+      rating: 5,
+      text: "I've taken the Ultra 2 to Everest base camp and beyond. The titanium build handles extreme conditions, and the action button is a game-changer for quick access to waypoints.",
+      image: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=200',
+    },
+    {
+      name: 'Emily Rodriguez',
+      role: 'Ultra Runner',
+      rating: 5,
+      text: 'The health monitoring features are phenomenal. Real-time heart rate zones, blood oxygen tracking, and temperature sensing help me optimize every training session.',
+      image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=200',
+    },
+    {
+      name: 'James Wilson',
+      role: 'Adventure Photographer',
+      rating: 5,
+      text: 'Durability meets elegance. The titanium finish looks premium while surviving harsh outdoor shoots. The bright display is perfectly readable even in direct sunlight.',
+      image: 'https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&w=200',
+    },
+    {
+      name: 'Nina Patel',
+      role: 'Fitness Coach',
+      rating: 5,
+      text: 'My clients love tracking their progress with Ultra 2. The detailed workout metrics and recovery insights make it the perfect tool for serious athletes.',
+      image: 'https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=200',
+    },
+  ];
+
   return (
-    <section className="py-20 lg:py-32 bg-white relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-96 h-96 bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-50 rounded-full mix-blend-multiply filter blur-3xl"></div>
+    <section id="reviews" className="py-24 bg-gradient-to-b from-[#0A1A2F] via-[#0F2847] to-[#0A1A2F] relative overflow-hidden">
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-40 right-40 w-96 h-96 bg-blue-500 rounded-full filter blur-[120px]"></div>
+      </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 lg:mb-20 space-y-4">
-          <span className="px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold inline-block">
-            Testimonials
-          </span>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900">
-            Loved by Thousands
-            <span className="block text-blue-600">Around the World</span>
+        <div className="text-center mb-16 space-y-4">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white">
+            Trusted by
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF7A1A] to-[#FF9500]"> Professionals</span>
           </h2>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            Don't just take our word for it. Here's what our customers say.
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            Join thousands of athletes and adventurers who rely on Ultra 2 every day.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-slate-200 overflow-hidden"
+              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/10 hover:border-white/20 transition-all duration-300 hover:-translate-y-2 relative group"
             >
-              <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${testimonial.color} opacity-5 rounded-full blur-2xl group-hover:opacity-10 transition-opacity duration-500`}></div>
+              <Quote className="absolute top-6 right-6 text-[#FF7A1A]/20 group-hover:text-[#FF7A1A]/40 transition-colors" size={40} />
 
-              <div className="relative z-10">
-                <Quote className="w-10 h-10 text-blue-600 opacity-20 mb-4" />
-
-                <div className="flex items-center gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-5 h-5 fill-yellow-400 text-yellow-400"
-                    />
-                  ))}
-                </div>
-
-                <p className="text-slate-700 text-lg leading-relaxed mb-6">
-                  "{testimonial.text}"
-                </p>
-
-                <div className="flex items-center gap-4">
-                  <div className={`w-14 h-14 rounded-full bg-gradient-to-br ${testimonial.color} flex items-center justify-center text-2xl shadow-lg`}>
-                    {testimonial.image}
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-slate-900 text-lg">
-                      {testimonial.name}
-                    </h4>
-                    <p className="text-slate-600 text-sm">
-                      {testimonial.role}
-                    </p>
-                  </div>
+              <div className="flex items-center gap-4 mb-6">
+                <img
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  className="w-16 h-16 rounded-full object-cover border-2 border-[#FF7A1A]/50"
+                  loading="lazy"
+                  decoding="async"
+                  sizes="(max-width: 640px) 30vw, 16vw"
+                />
+                <div>
+                  <h4 className="text-white font-bold text-lg">{testimonial.name}</h4>
+                  <p className="text-gray-400 text-sm">{testimonial.role}</p>
                 </div>
               </div>
 
-              <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+              <div className="flex gap-1 mb-4">
+                {[...Array(testimonial.rating)].map((_, i) => (
+                  <Star key={i} size={16} className="fill-[#FF7A1A] text-[#FF7A1A]" />
+                ))}
+              </div>
+
+              <p className="text-gray-300 leading-relaxed">{testimonial.text}</p>
             </div>
           ))}
         </div>
 
-        <div className="mt-16 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-3xl p-8 lg:p-12">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
-            <div className="text-center lg:text-left">
-              <h3 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
-                Join Our Community
-              </h3>
-              <p className="text-xl text-slate-600 max-w-xl">
-                Be part of a growing community of health-conscious individuals transforming their lives.
-              </p>
+        <div className="mt-16 text-center">
+          <div className="inline-flex items-center gap-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl px-12 py-8">
+            <div>
+              <div className="text-4xl font-bold text-white">4.9</div>
+              <div className="flex gap-1 mt-2">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={16} className="fill-[#FF7A1A] text-[#FF7A1A]" />
+                ))}
+              </div>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <div className="text-center p-6 bg-white rounded-2xl shadow-lg">
-                <p className="text-4xl font-bold text-blue-600 mb-1">50K+</p>
-                <p className="text-slate-600 text-sm">Active Users</p>
-              </div>
-              <div className="text-center p-6 bg-white rounded-2xl shadow-lg">
-                <p className="text-4xl font-bold text-blue-600 mb-1">4.9</p>
-                <p className="text-slate-600 text-sm">Average Rating</p>
-              </div>
-              <div className="text-center p-6 bg-white rounded-2xl shadow-lg">
-                <p className="text-4xl font-bold text-blue-600 mb-1">99%</p>
-                <p className="text-slate-600 text-sm">Satisfaction</p>
-              </div>
+            <div className="h-16 w-px bg-white/20"></div>
+            <div className="text-left">
+              <div className="text-2xl font-bold text-white">12,500+</div>
+              <div className="text-sm text-gray-400">Verified Reviews</div>
             </div>
           </div>
         </div>
@@ -130,4 +121,4 @@ const Testimonials = () => {
   );
 };
 
-export default Testimonials;
+export default memo(Testimonials);
