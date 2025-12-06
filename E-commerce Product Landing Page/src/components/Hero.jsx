@@ -1,6 +1,7 @@
 import React from 'react';
-import { ArrowRight, Zap, ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
+import { ArrowRight, Zap, ChevronLeft, ChevronRight, Play, Pause, Check } from 'lucide-react';
 import { useState, useEffect, useRef, useMemo } from 'react';
+import { motion } from 'framer-motion';
 import AppleWatchImage from '../assets/Apple Watch Ultra 2 Titanium Orange Ocean Band.png';
 import DetailsImage from '../assets/details.jpg';
 import FeaturesImage from '../assets/features.jpg';
@@ -15,6 +16,10 @@ import SOSVideo from '../assets/video_2025-12-05_10-15-09.mp4';
 */
 
 const Hero = () => {
+  const MotionSection = motion && motion.section ? motion.section : 'section';
+  const MotionH1 = motion && motion.h1 ? motion.h1 : 'h1';
+  const MotionP = motion && motion.p ? motion.p : 'p';
+  const MotionImg = motion && motion.img ? motion.img : 'img';
   const scrollToPricing = () => {
     const element = document.getElementById('pricing');
     if (element) {
@@ -158,7 +163,7 @@ const Hero = () => {
   };
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0A1A2F] via-[#0F2847] to-[#0A1A2F] pt-16">
+    <MotionSection ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0A1A2F] via-[#0F2847] to-[#0A1A2F] pt-16" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.6 }}>
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-20 left-10 w-72 h-72 bg-[#FF7A1A] rounded-full filter blur-[120px]"></div>
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500 rounded-full filter blur-[120px]"></div>
@@ -166,39 +171,50 @@ const Hero = () => {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="text-left space-y-8 animate-fade-in">
+          <motion.div className="text-left space-y-8 animate-fade-in" initial={{ opacity: 0, y: 15, scale: 0.97 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
             <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2">
               <Zap size={16} className="text-[#FF7A1A]" />
               <span className="text-sm text-gray-300">New Release 2024</span>
             </div>
 
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight">
+            <MotionH1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight" initial={{ opacity: 0, y: 10, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 0.4 }}>
               Apple Watch
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D6D6D6] to-[#FF7A1A]">
                 Ultra 2
               </span>
-            </h1>
+            </MotionH1>
 
-            <p className="text-xl text-gray-300 leading-relaxed max-w-xl">
+            <MotionP className="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-xl" initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.15 }}>
               Titanium precision meets adventure. The most rugged and capable Apple Watch ever,
               designed for endurance athletes, outdoor explorers, and water sports enthusiasts.
-            </p>
+            </MotionP>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <motion.div className="flex flex-col sm:flex-row gap-4" initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.3 }}>
               <button
                 onClick={scrollToPricing}
                 className="group bg-gradient-to-r from-[#FF7A1A] to-[#FF9500] text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-2xl hover:shadow-[#FF7A1A]/50 transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-2"
+                aria-label="Buy Now — $799 Limited Time Offer"
               >
-                Shop Now
+                Buy Now — $799
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </button>
               <button
-                onClick={() => document.getElementById('features').scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => {
+                  const vi = mediaItems.findIndex((m) => m.type === 'video');
+                  if (vi >= 0) setCurrent(vi);
+                }}
                 className="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/20 transition-all duration-300 hover:-translate-y-1"
+                aria-label="Watch Demo"
               >
-                Learn More
+                Watch Demo
               </button>
+            </motion.div>
+
+            <div className="flex flex-wrap items-center gap-4 text-gray-300 pt-2">
+              <div className="flex items-center gap-2"><Check size={16} className="text-green-400" /> Free 2‑day shipping</div>
+              <div className="flex items-center gap-2"><Check size={16} className="text-green-400" /> 30‑day free returns</div>
+              <div className="flex items-center gap-2"><Check size={16} className="text-green-400" /> 2‑year warranty included</div>
             </div>
 
             <div className="flex items-center gap-8 pt-4">
@@ -217,7 +233,7 @@ const Hero = () => {
                 <div className="text-sm text-gray-400">Battery Life</div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           <div className="relative lg:h-[600px] flex items-center justify-center">
             <div className="absolute inset-0 bg-gradient-to-br from-[#FF7A1A]/20 to-transparent rounded-full filter blur-3xl"></div>
@@ -244,7 +260,6 @@ const Hero = () => {
                   <div className="relative mx-auto aspect-square overflow-hidden rounded-xl">
                     <div className="block sm:hidden pb-[100%]"></div>
 
-                    {/* Slides */}
                     {mediaItems.map((item, index) => {
                       const isActive = index === current;
                       const baseSlide =
@@ -257,16 +272,18 @@ const Hero = () => {
                           : 'opacity-0 translate-x-6';
 
                           return item.type === 'image' ? (
-                            <img
+                            <MotionImg
                               key={index}
                               src={item.src}
                               alt={item.alt}
-                              className={`${baseSlide} ${motion} object-contain drop-shadow-2xl`}
+                              className={`${baseSlide} ${motion} object-contain drop-shadow-2xl will-change-transform`}
                               loading="lazy"
                               decoding="async"
                               fetchpriority="low"
                               srcSet={`${item.src} 1x, ${item.src} 2x`}
                               sizes="(max-width: 640px) 80vw, (max-width: 1024px) 60vw, 40vw"
+                              animate={isActive ? { rotate: [-3, 3, -3] } : { rotate: 0 }}
+                              transition={{ duration: 8, ease: 'easeInOut', repeat: Infinity }}
                             />
                       ) : (
                         <div key={index} className={`${baseSlide} ${motion}`} aria-hidden={!isActive}>
@@ -322,11 +339,11 @@ const Hero = () => {
                               }}
                               className={`absolute inset-0 z-10 flex items-center justify-center transition-opacity duration-300 ${isVideoPlaying ? 'md:opacity-0 opacity-70' : 'opacity-100'}`}
                             >
-                              <div className="bg-white/10 hover:bg-white/20 border border-white/20 rounded-full p-3 shadow-lg transition-colors">
+                              <div className="bg-white/10 hover:bg-white/20 border border-white/20 rounded-full p-3 shadow-lg transition-colors ">
                                 {isVideoPlaying ? (
-                                  <Pause size={24} className="text-white/90" />
+                                  <Pause size={24} className="text-[0f2745]/50" />
                                 ) : (
-                                  <Play size={24} className="text-white/90" />
+                                  <Play size={24} className="text-[0f2745]/50" />
                                 )}
                               </div>
                             </button>
@@ -346,7 +363,7 @@ const Hero = () => {
                       onClick={() => {
                         goPrev();
                       }}
-                      className="flex absolute left-2 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-[#0f2542] hover:text-white p-2 rounded-full transition-all duration-300 z-20"
+                      className="flex absolute left-2 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-[#0f2745]/50 backdrop-blur-sm border border-white/20 text-[#0f2542] hover:text-white p-2 rounded-full transition-all duration-300 z-20"
                     >
                       <ChevronLeft size={20} />
                     </button>
@@ -355,7 +372,7 @@ const Hero = () => {
                       onClick={() => {
                         goNext();
                       }}
-                      className="flex absolute right-2 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-[#0f2542] hover:text-white p-2 rounded-full transition-all duration-300 z-20"
+                      className="flex absolute right-2 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-[#0f2745]/50 backdrop-blur-sm border border-white/20 text-[#0f2542] hover:text-white p-2 rounded-full transition-all duration-300 z-20"
                     >
                       <ChevronRight size={20} />
                     </button>
@@ -372,7 +389,7 @@ const Hero = () => {
           <div className="w-1 h-2 bg-white/50 rounded-full"></div>
         </div>
       </div>
-    </section>
+    </MotionSection>
   );
 };
 

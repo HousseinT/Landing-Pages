@@ -47,7 +47,7 @@ const Navbar = () => {
                 onClick={() => scrollToSection('pricing')}
                 className="bg-gradient-to-r from-[#FF7A1A] to-[#FF9500] text-white px-6 py-2 rounded-full font-semibold text-sm hover:shadow-lg hover:shadow-[#FF7A1A]/50 transition-all duration-300 hover:-translate-y-0.5"
               >
-                Buy Now
+                Buy Now — $799
               </button>
             </div>
           </div>
@@ -98,7 +98,7 @@ const Navbar = () => {
               className="w-full bg-gradient-to-r from-[#FF7A1A] to-[#FF9500] text-white px-6 py-2 rounded-full font-semibold text-sm mt-2"
               aria-label="Go to Pricing"
             >
-              Buy Now
+              Buy Now — $799
             </button>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Star, Quote } from 'lucide-react';
 import { memo } from 'react';
+import { motion } from 'framer-motion';
 
 const Testimonials = () => {
   const testimonials = [
@@ -49,13 +50,13 @@ const Testimonials = () => {
   ];
 
   return (
-    <section id="reviews" className="py-24 bg-gradient-to-b from-[#0A1A2F] via-[#0F2847] to-[#0A1A2F] relative overflow-hidden">
+    <motion.section id="reviews" className="py-20 sm:py-24 bg-gradient-to-b from-[#0A1A2F] via-[#0F2847] to-[#0A1A2F] relative overflow-hidden" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.5 }}>
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-40 right-40 w-96 h-96 bg-blue-500 rounded-full filter blur-[120px]"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 space-y-4">
+        <motion.div className="text-center mb-16 space-y-4" initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white">
             Trusted by
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF7A1A] to-[#FF9500]"> Professionals</span>
@@ -63,13 +64,18 @@ const Testimonials = () => {
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             Join thousands of athletes and adventurers who rely on Ultra 2 every day.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
-            <div
+            <motion.div
               key={index}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/10 hover:border-white/20 transition-all duration-300 hover:-translate-y-2 relative group"
+              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 relative group"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ scale: 1.03, y: -4 }}
             >
               <Quote className="absolute top-6 right-6 text-[#FF7A1A]/20 group-hover:text-[#FF7A1A]/40 transition-colors" size={40} />
 
@@ -95,7 +101,7 @@ const Testimonials = () => {
               </div>
 
               <p className="text-gray-300 leading-relaxed">{testimonial.text}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
 
@@ -117,7 +123,7 @@ const Testimonials = () => {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

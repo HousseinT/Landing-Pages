@@ -1,6 +1,7 @@
 import React from 'react';
 import { Check } from 'lucide-react';
 import { memo, useMemo } from 'react';
+import { motion } from 'framer-motion';
 
 const Specifications = () => {
   const specs = useMemo(() => [
@@ -62,13 +63,13 @@ const Specifications = () => {
   ], []);
 
   return (
-    <section id="specs" className="py-24 bg-gradient-to-b from-[#0F2847] to-[#0A1A2F] relative overflow-hidden">
+    <motion.section id="specs" className="py-20 sm:py-24 bg-gradient-to-b from-[#0F2847] to-[#0A1A2F] relative overflow-hidden" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.5 }}>
       <div className="absolute inset-0 opacity-20">
         <div className="absolute bottom-40 left-20 w-96 h-96 bg-[#FF7A1A] rounded-full filter blur-[120px]"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 space-y-4">
+        <motion.div className="text-center mb-16 space-y-4" initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white">
             Technical
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D6D6D6] to-[#FF7A1A]"> Specifications</span>
@@ -76,15 +77,20 @@ const Specifications = () => {
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             Precision engineering meets cutting-edge technology. Every detail matters.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {specs.map((spec, index) => (
-            <div
+            <motion.div
               key={index}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
+              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8  hover:border-[#FF7A1A]/50"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ scale: 1.03, y: -4 }}
             >
-              <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+              <h3 className="text-2xl font-bold  text-white mb-6 flex items-center gap-2" >
                 <div className="w-1.5 h-8 bg-gradient-to-b from-[#FF7A1A] to-[#FF9500] rounded-full"></div>
                 {spec.category}
               </h3>
@@ -96,11 +102,11 @@ const Specifications = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
         </div>
 
-        <div className="mt-16 bg-gradient-to-r from-[#FF7A1A]/10 to-blue-500/10 backdrop-blur-sm border border-white/10 rounded-3xl p-8 sm:p-12">
+        <motion.div className="mt-16 bg-gradient-to-r from-[#FF7A1A]/10 to-blue-500/10 backdrop-blur-sm border border-white/10 rounded-3xl p-8 sm:p-12" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h3 className="text-3xl font-bold text-white mb-4">
@@ -138,9 +144,9 @@ const Specifications = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

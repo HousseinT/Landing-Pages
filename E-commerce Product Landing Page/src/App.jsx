@@ -2,6 +2,7 @@ import React from 'react';
 import { Suspense, lazy } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import MobileStickyCTA from './components/MobileStickyCTA';
 
 const Features = lazy(() => import('./components/Features'));
 const Specifications = lazy(() => import('./components/Specifications'));
@@ -21,6 +22,7 @@ function App() {
         <Pricing />
         <Footer />
       </Suspense>
+      <MobileStickyCTA />
     </main>
   );
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Mountain, Droplets, Battery, Gauge, Heart, MapPin } from 'lucide-react';
 import { memo, useMemo } from 'react';
+import { motion } from 'framer-motion';
 
 const Features = () => {
   const features = useMemo(() => [
@@ -37,13 +38,13 @@ const Features = () => {
   ], []);
 
   return (
-    <section id="features" className="py-24 bg-gradient-to-b from-[#0A1A2F] to-[#0F2847] relative overflow-hidden">
+    <motion.section id="features" className="py-20 sm:py-24 bg-gradient-to-b from-[#0A1A2F] to-[#0F2847] relative overflow-hidden" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.5 }}>
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-40 right-20 w-64 h-64 bg-blue-500 rounded-full filter blur-[100px]"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 space-y-4">
+        <motion.div className="text-center mb-16 space-y-4" initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white">
             Engineered for
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF7A1A] to-[#FF9500]"> Extremes</span>
@@ -51,24 +52,29 @@ const Features = () => {
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             Every feature designed to push boundaries and elevate performance in the most demanding environments.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <div
+            <motion.div
               key={index}
-              className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/10 hover:border-[#FF7A1A]/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#FF7A1A]/20"
+              className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:shadow-2xl hover:shadow-[#FF7A1A]/20   hover:border-[#FF7A1A]/50"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ scale: 1.03, y: -4 }}
             >
-              <div className="w-14 h-14 bg-gradient-to-br from-[#FF7A1A] to-[#FF9500] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="w-14 h-14 bg-gradient-to-br from-[#FF7A1A] to-[#FF9500]  rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 ">
                 <feature.icon className="text-white" size={28} />
               </div>
               <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
               <p className="text-gray-400 leading-relaxed">{feature.description}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

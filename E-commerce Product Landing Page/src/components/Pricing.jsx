@@ -1,6 +1,7 @@
 import React from 'react';
 import { Check, ShoppingCart, Zap, Shield, Truck } from 'lucide-react';
 import { memo, useMemo } from 'react';
+import { motion } from 'framer-motion';
 
 const Pricing = () => {
   const benefits = useMemo(() => [
@@ -19,13 +20,13 @@ const Pricing = () => {
   ], []);
 
   return (
-    <section id="pricing" className="py-24 bg-gradient-to-b from-[#0A1A2F] to-[#0F2847] relative overflow-hidden">
+    <motion.section id="pricing" className="py-20 sm:py-24 bg-gradient-to-b from-[#0A1A2F] to-[#0F2847] relative overflow-hidden" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.5 }}>
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-20 left-1/2 transform -translate-x-1/2 w-[600px] h-[600px] bg-[#FF7A1A] rounded-full filter blur-[150px]"></div>
       </div>
 
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 space-y-4">
+        <motion.div className="text-center mb-16 space-y-4" initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white">
             Own the
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF7A1A] to-[#FF9500]"> Ultimate</span>
@@ -33,9 +34,9 @@ const Pricing = () => {
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
             Invest in precision engineering and unmatched performance.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/20 rounded-3xl p-8 sm:p-12 shadow-2xl">
+        <motion.div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/20 rounded-3xl p-8 sm:p-12 shadow-2xl" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="mb-8">
@@ -52,13 +53,17 @@ const Pricing = () => {
                 </div>
                 <div className="inline-flex items-center gap-2 bg-[#FF7A1A]/20 border border-[#FF7A1A]/50 rounded-full px-4 py-2 mt-4">
                   <Zap size={16} className="text-[#FF7A1A]" />
-                  <span className="text-sm text-[#FF7A1A] font-semibold">Limited Time Offer - Save $100</span>
+                  <span className="text-sm text-[#FF7A1A] font-semibold">Limited Time Offer — Save $100</span>
+                </div>
+                <div className="mt-4 grid grid-cols-2 gap-3">
+                  <div className="flex items-center gap-2 text-green-400"><Check size={16} /> In stock — few units left</div>
+                  <div className="flex items-center gap-2 text-[#FF7A1A]"><Zap size={16} /> Offer ends today</div>
                 </div>
               </div>
 
-              <button className="w-full bg-gradient-to-r from-[#FF7A1A] to-[#FF9500] text-white px-8 py-5 rounded-full font-bold text-lg hover:shadow-2xl hover:shadow-[#FF7A1A]/50 transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-3 mb-6 group" aria-label="Add Apple Watch Ultra 2 to cart">
+              <button className="w-full bg-gradient-to-r from-[#FF7A1A] to-[#FF9500] text-white px-8 py-5 rounded-full font-bold text-lg hover:shadow-2xl hover:shadow-[#FF7A1A]/50 transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-3 mb-6 group" aria-label="Buy Now — $799">
                 <ShoppingCart size={24} />
-                Add to Cart
+                Buy Now — $799
                 <div className="w-0 group-hover:w-2 h-2 bg-white rounded-full transition-all duration-300"></div>
               </button>
 
@@ -105,7 +110,7 @@ const Pricing = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         <div className="mt-8 text-center">
           <p className="text-gray-400 text-sm">
@@ -116,7 +121,7 @@ const Pricing = () => {
           </p>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
